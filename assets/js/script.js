@@ -18,5 +18,6 @@ we need
 ----Humidity
 
 --a function that saves the cities previously called into local storage
---
+---then allows these city buttons to be clicked later and pull the 
+current weather for that city
 */
