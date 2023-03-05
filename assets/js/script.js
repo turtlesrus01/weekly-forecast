@@ -28,7 +28,18 @@ var city = '';
 
 //Jquery wrapper
 $(function () {
-  function callAPI (){
-    
-  }
-})
+  //Jquery handler function
+  $(document).ready(function(){
+    //Function that calls the openWeather API
+    $('#searchBtn').click(function callAPI (){
+      //Pulls text data and stores it in city variable
+      city = $('#searchTxt').val();
+      console.log(city);
+      //fetch openWeather API
+      fetch('api.openweathermap.org/data/2.5/weather?q=Portland&appid=c72e3fbed3e580864d513d81340cda04')
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+
+    })
+  });
+});
