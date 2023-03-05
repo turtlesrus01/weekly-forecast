@@ -21,3 +21,14 @@ we need
 ---then allows these city buttons to be clicked later and pull the 
 current weather for that city
 */
+
+//variables
+var APIKey = 'f28fbcba06d08310e5aabfc471d6fe38';
+var city = '';
+
+//Jquery wrapper
+$(function () {
+  function callAPI (){
+    
+  }
+})
