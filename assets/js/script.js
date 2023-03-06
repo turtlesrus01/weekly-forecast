@@ -26,7 +26,7 @@ current weather for that city
 var APIKey = '&appid=c72e3fbed3e580864d513d81340cda04';
 var city = '';
 var requestURL = 'https://api.openweathermap.org/data/2.5/weather?q=';
-var AppId
+
 
 //Jquery wrapper
 $(function () {
@@ -39,7 +39,7 @@ $(function () {
       console.log(city);
       console.log(requestURL);
       //fetch openWeather API
-      fetch(requestURL+city+APIKey)
+      fetch(requestURL+city+APIKey+'&units=imperial')
       .then(response=>{
         console.log(response);
         return response.json();
@@ -47,6 +47,8 @@ $(function () {
       .then(response => {
         console.log('API Call Successful')
         console.log(response);
+        var cityWeather = response;
+        populateCity(cityWeather)
       })
       .catch(error => {
         console.log('Error in response');
@@ -54,6 +56,20 @@ $(function () {
       });
 
 
-    })
+    });
+    //function that populates the text from our JSON
+    function populateCity(cityWeather){
+      //Container
+      var cityArea = $('#cityArea');
+
+      var temp = 'Temperature:'+$(cityWeather.main.temp);
+      console.log(cityWeather.main.temp)
+      var wind = `Wind Speed: $(wind.speed)\n`;
+      var humidity = `Humidity: $(main.humidity)`;
+
+      $('#cityArea').append(city,temp,wind,humidity);
+
+      
+    }
   });
 });
