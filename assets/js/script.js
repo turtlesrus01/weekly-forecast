@@ -23,9 +23,10 @@ current weather for that city
 */
 
 //variables
-var APIKey = 'f28fbcba06d08310e5aabfc471d6fe38';
+var APIKey = '&appid=c72e3fbed3e580864d513d81340cda04';
 var city = '';
-var requestURL = 'api.openweathermap.org/data/2.5/weather?q=Portland&appid=c72e3fbed3e580864d513d81340cda04';
+var requestURL = 'https://api.openweathermap.org/data/2.5/weather?q=';
+var AppId
 
 //Jquery wrapper
 $(function () {
@@ -36,19 +37,22 @@ $(function () {
       //Pulls text data and stores it in city variable
       city = $('#searchTxt').val();
       console.log(city);
+      console.log(requestURL);
       //fetch openWeather API
-      fetch(requestURL, {
-        method: 'GET',
-
+      fetch(requestURL+city+APIKey)
+      .then(response=>{
+        console.log(response);
+        return response.json();
       })
-        .then((response) => {
-          if (response.status===200){
-            
-          } else {
-            response.json()
-          }
-        })
-        .then((data) => console.log(data));
+      .then(response => {
+        console.log('API Call Successful')
+        console.log(response);
+      })
+      .catch(error => {
+        console.log('Error in response');
+        console.error(error);
+      });
+
 
     })
   });
