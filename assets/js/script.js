@@ -62,12 +62,12 @@ $(function () {
       //Container
       var cityArea = $('#cityArea');
 
-      var temp = 'Temperature:'+$(cityWeather.main.temp);
+      var temp = '<br>Temperature: ' + cityWeather.main.temp + 'F<br>';
       console.log(cityWeather.main.temp)
-      var wind = `Wind Speed: $(wind.speed)\n`;
-      var humidity = `Humidity: $(main.humidity)`;
+      var wind = 'Wind Speed: ' + cityWeather.wind.speed +'mph<br>';
+      var humidity = 'Humidity: ' + cityWeather.main.humidity + '%<br>';
 
-      $('#cityArea').append(city,temp,wind,humidity);
+      cityArea.append(city,temp,wind,humidity);
 
       
     }
